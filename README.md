@@ -1,4 +1,4 @@
-# Moberg Clinical Platform (MCP) Third-party App Integration
+# Moberg Clinical Platform (MCP) App Integration Template
 
 ### Clients must fork this repository and **must not** create a pull request.
 
