@@ -36,23 +36,17 @@ The goal of this repository is to:
 Ensure your environment matches the versions below to avoid compatibility issues:
 
 ```
-Python 3.8.19
-numpy==1.20.3
-pandas==2.0.2
-scipy==1.10.0
+Python 3.12.12
+numpy==1.26.4
+pandas==2.1.4
+scipy==1.11.4
 pytest==8.1.1
-cython==0.29.21
+cython==3.1.4
 ```
 
-> ⚠️ **Python version note**
-> Moberg Analytics is **currently migrating from Python 3.8 to Python 3.12**.
-> This means:
->
-> * Newer releases may require updated dependency versions
-> * Compiled modules (`.so` files) **must be rebuilt** for Python 3.12
-> * Package constraints may change in the near future to maintain compatibility
->
-> We recommend avoiding hard-coded assumptions about Python internals and periodically validating your build against newer Python versions.
+The NumPy, pandas, SciPy, and pytest pins match MCP's master requirements.
+Cython is a build dependency and uses the version from MCP's Python 3.12 extension
+builds.
 
 ### Installation Steps
 
@@ -74,7 +68,7 @@ pip install -r requirements.txt
 Moberg Analytics expects modules to be delivered as **compiled Python extension files** (`.so`), for example:
 
 ```
-sd_module.cpython-38-x86_64-linux-gnu.so
+sd_module.cpython-312-x86_64-linux-gnu.so
 ```
 
 ## ⚠️ Multiprocessing Compatibility (Important)
@@ -171,7 +165,7 @@ python setup.py build_ext --inplace
    After building, you should see a file similar to:
 
 ```
-sd_module.cpython-38-x86_64-linux-gnu.so
+sd_module.cpython-312-x86_64-linux-gnu.so
 ```
 
 This `.so` file is the **deliverable artifact** to Moberg Analytics.
@@ -180,7 +174,7 @@ This `.so` file is the **deliverable artifact** to Moberg Analytics.
 >
 > * The `.so` file is **Python-version and architecture specific**
 > * Builds must be performed on a compatible Linux environment
-> * Python 3.8 and Python 3.12 builds are **not interchangeable**
+> * Builds for other Python versions are **not interchangeable** with Python 3.12 builds
 
 ## Usage
 
@@ -234,7 +228,7 @@ Document notable changes here, including:
 
 * Version bumps
 * Dependency updates
-* Python compatibility changes (e.g., 3.8 → 3.12)
+* Python compatibility changes
 * Behavioral or output differences
 
 ## Contact
